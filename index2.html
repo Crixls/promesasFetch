@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .fade-out {
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
+      }
+    </style>
+    <script>
+      function fadeOut(element, duration) {
+        var opacity = 1;
+        var interval = 50;
+        var gap = interval / duration;
+
+        function decreaseOpacity() {
+          opacity -= gap;
+
+          if (opacity <= 0) {
+            opacity = 0;
+            clearInterval(fading);
+          }
+
+          element.style.opacity = opacity;
+        }
+
+        var fading = setInterval(decreaseOpacity, interval);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="fade-out">
+      <p>Este es el elemento que se desvanecerá.</p>
+    </div>
+    <button onclick="fadeOut(document.querySelector('.fade-out'), 1000)">Desvanecer</button>
+  </body>
+</html>
